@@ -11,11 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('migrations', function (Blueprint $table) {
-            $table->integer('id')->primary()->unsigned()->autoIncrement()->nullable(false);
-            $table->string('migration')->nullable(false);
-           $table->integer('batch')->nullable(false);
-        });
+        // Để trống hoàn toàn ở đây, không viết gì cả bạn nhé!
     }
 
     /**
@@ -23,6 +19,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('migrations');
+        // Để trống hoàn toàn ở đây luôn!
     }
 };

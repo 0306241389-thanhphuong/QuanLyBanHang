@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->bigInteger('id')->primary()->unsigned()->autoIncrement()->nullable(false);  
-            $table->bigInteger('category_id')->unsigned()->nullable(false);  
+            $table->id();
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->string('name')->nullable(false);
             $table->text('description')->nullable(true);
             $table->string('image')->nullable(true);
@@ -22,7 +22,6 @@ return new class extends Migration
             $table->tinyInteger('is_available')->nullable(false)->default(1);
             $table->timestamp('created_at')->nullable(true);
             $table->timestamp('updated_at')->nullable(true);
-
         });
     }
 

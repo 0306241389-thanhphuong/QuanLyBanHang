@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('order_items', function (Blueprint $table) {
-            $table->bigInteger('id')->primary()->unsigned()->autoIncrement()->nullable(false);  
-            $table->bigInteger('id_order')->unsigned()->nullable(false);  
-            $table->bigInteger('id_product')->unsigned()->nullable(false);  
+            $table->id(); 
+            $table->foreignId('id_order')->constrained('orders');
+            $table->foreignId('id_product')->constrained('products');
             $table->integer('quantity')->nullable(false);
             $table->integer('price')->nullable(false);   
             $table->timestamp('created_at')->nullable(true);

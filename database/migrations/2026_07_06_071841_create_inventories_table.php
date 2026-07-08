@@ -12,14 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('inventories', function (Blueprint $table) {
-            $table->bigInteger('id')->primary()->unsigned()->autoIncrement()->nullable(false);  
+            $table->id();
             $table->string('name')->nullable(false);
             $table->integer('stock')->nullable(false);
             $table->string('unit')->nullable(false);
-            $table->bigInteger('supplier_id ')->unsigned()->nullable(false);
+            $table->foreignId('supplier_id')->constrained('suppliers')->onDelete('cascade');
             $table->timestamp('created_at')->nullable(true);
             $table->timestamp('updated_at')->nullable(true);
-
         });
     }
 

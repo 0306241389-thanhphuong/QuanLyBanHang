@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('discounts', function (Blueprint $table) {
-            $table->bigInteger('id')->primary()->unsigned()->autoIncrement();
+            $table->id();
             $table->string('name');
             $table->text('description')->nullable();
             $table->enum('type', ['fixed', 'percentage'])->default('percentage')->nullable();

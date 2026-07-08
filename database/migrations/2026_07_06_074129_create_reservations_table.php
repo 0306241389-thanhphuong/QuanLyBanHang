@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reservations', function (Blueprint $table) {
-            $table->bigInteger('id')->primary()->unsigned()->autoIncrement()->nullable(false);  
+            $table->id();
             $table->string('reservation_code')->nullable(false);
             $table->date('reservation_date')->nullable(false);
             $table->date('reservation_time')->nullable(false);

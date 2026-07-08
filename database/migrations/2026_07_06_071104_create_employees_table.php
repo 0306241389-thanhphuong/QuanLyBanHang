@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->bigInteger('id')->primary()->unsigned()->autoIncrement();
-            $table->bigInteger('user_id ')->unsigned();
+            $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('name');
             $table->string('phone');
             $table->string('position');
             $table->date('date_of_birth');
             $table->date('date_of_joining');
-            $table->decimal('salary',8,2);
+            $table->decimal('salary', 8, 2);
             $table->string('address');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

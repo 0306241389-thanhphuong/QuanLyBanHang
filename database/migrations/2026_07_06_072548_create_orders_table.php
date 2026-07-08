@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->bigInteger('id')->primary()->unsigned()->autoIncrement()->nullable(false);  
+            $table->id();
             $table->string('payment_amount')->nullable(false);
             $table->integer('sub_total')->nullable(false);
             $table->integer('tax')->nullable(false);
@@ -27,8 +27,7 @@ return new class extends Migration
             $table->timestamp('created_at')->nullable(true);
             $table->timestamp('updated_at')->nullable(true);
             $table->enum('order_type', ['dinein', 'reservation'])->nullable(true);
-            $table->bigInteger('id_reservasi ')->nullable(true)->unsigned();
-
+            $table->foreignId('id_reservasi')->nullable()->constrained('reservations')->onDelete('cascade');
         });
     }
 
